@@ -2,9 +2,9 @@
 
 [약전계 테스트]
 
-https://developer.apple.com/downloads/
+http://nshipster.com/network-link-conditioner/
 
-https://github.com/PFXStudio/iOS.git
+https://developer.apple.com/downloads/
 
 
 # PFXStudio
