@@ -23,6 +23,16 @@ http://nshipster.com/network-link-conditioner/
 
 https://developer.apple.com/downloads/
 
+# Storyboard TableViewController 뷰가 아래로 내려가는 문제
+
+코드로 
+
+navigationBar.translucent = NO;
+
+스토리보드 NavigationBar 속성에
+
+Translucent 체크 해제
+
 # PFXStudio
 
 Mobile : http://pfxstudio.modoo.at/
