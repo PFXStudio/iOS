@@ -33,6 +33,19 @@ navigationBar.translucent = NO;
 
 Translucent 체크 해제
 
+#iOS9 Bitcode Error
+
+*	![demo](bitcodeError.png)
+
+````
+iOS9 대응 중 Archive 시 bitcode 빌드 에러가 난다.
+does not contain bitcode. You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE), obtain an updated library from the vendor, or disable bitcode for this target. for architecture armv7
+
+Build Settings - Enable Bitcode - NO로 변경
+
+````
+
+
 # PFXStudio
 
 Mobile : http://pfxstudio.modoo.at/
