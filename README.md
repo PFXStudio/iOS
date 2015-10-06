@@ -1,4 +1,4 @@
-#ATS
+#iOS9 ATS
 
 *	![demo](screenShot.png)
 
@@ -17,25 +17,10 @@ add NSAppTransportSecurity(Type Dictionary)
 add NSAllowsArbitraryLoads(Type boolean) YES
 
 ````
-# 약전계 테스트
-
-http://nshipster.com/network-link-conditioner/
-
-https://developer.apple.com/downloads/
-
-# Storyboard TableViewController 뷰가 아래로 내려가는 문제
-
-코드로 
-
-navigationBar.translucent = NO;
-
-스토리보드 NavigationBar 속성에
-
-Translucent 체크 해제
 
 #iOS9 Bitcode Error
 
-*	![demo](bitcodeError.png)
+*   ![demo](bitcodeError.png)
 
 ````
 iOS9 대응 중 Archive 시 bitcode 빌드 에러가 난다.
@@ -71,9 +56,10 @@ Build Settings - Enable Bitcode - NO로 변경
 )
 
 ````
-````
+
 해결 방안
 
+````
 -  ( BOOL ) application : ( UIApplication  * ) Application  didFinishLaunchingWithOptions : ( NSDictionary  * ) launchOptions 
 { 
     // 윈도우 초기화 
@@ -84,9 +70,29 @@ Build Settings - Enable Bitcode - NO로 변경
     return  YES ; 
 }
 
-http://qiita.com/peromasamune/items/716de6da66dd31faeba8
 
 ````
+
+참고
+
+http://qiita.com/peromasamune/items/716de6da66dd31faeba8
+
+# 약전계 테스트
+
+http://nshipster.com/network-link-conditioner/
+
+https://developer.apple.com/downloads/
+
+# Storyboard TableViewController 뷰가 아래로 내려가는 문제
+
+코드로 
+
+navigationBar.translucent = NO;
+
+스토리보드 NavigationBar 속성에
+
+Translucent 체크 해제
+
 
 # PFXStudio
 
