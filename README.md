@@ -45,6 +45,48 @@ Build Settings - Enable Bitcode - NO로 변경
 
 ````
 
+#iOS9 Application windows are expected to have a root view controller at the end of application launch Crash!
+
+````
+*** Terminating app due to uncaught exception 'NSInternalInconsistencyException'reason : 'Application windows are expected to have a root view controller at the end of application launch'
+*** First throw call stack :
+(
+    0 CoreFoundation 0x000000010b9cf7c5 __exceptionPreprocess + 165
+    1 libobjc.A.dylib 0x000000010afdadcd objc_exception_throw +48
+    2 CoreFoundation 0x000000010b9cf62a + NSException raise : format : arguments : + 106
+    3 Foundation 0x000000010ac14bf1 - [NSAssertionHandler handleFailureInMethod : object : file : lineNumber : description : + 198
+    4 UIKit 0x00000001097c3eca - [UIApplication _runWithMainScene : transitionContext : completion : + 2875
+    5 UIKit 0x00000001097c1208 - [UIApplication workspaceDidEndTransaction : + 188
+    6 FrontBoardServices 0x000000010fee1c0f - [FBSSerialQueue _performNext + 192
+    7 FrontBoardServices 0x000000010fee1f7d - [FBSSerialQueue _performNextFromRunLoopSource + 45
+    8 CoreFoundation 0x000000010b8f9ba1 __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__ + 17
+    9 CoreFoundation 0x000000010b8efacc __CFRunLoopDoSources0 + 556
+    10 CoreFoundation 0x000000010b8eef83 __CFRunLoopRun + 867
+    11 CoreFoundation 0x000000010b8ee998 CFRunLoopRunSpecific + 488
+    12 UIKit 0x00000001097c0ba5 - [UIApplication _run + 402
+    13 UIKit 0x00000001097c52cb UIApplicationMain + 171
+    14 TestApp 0x0000000108968d8f main + 111
+    15 libdyld.dylib 0x000000010d4e292d start + 1
+    16 ??? 0x0000000000000001 0x0 + 1
+)
+
+````
+````
+해결 방안
+
+-  ( BOOL ) application : ( UIApplication  * ) Application  didFinishLaunchingWithOptions : ( NSDictionary  * ) launchOptions 
+{ 
+    // 윈도우 초기화 
+    self . window  =  [[ UIWindow  alloc ]  initWithFrame : [ UIScreen  MainScreen ]  bounds ]]; 
+    self . window . rootViewController  =  [ UIViewController  new ]; 
+    [ self . window  makeKeyAndVisible ];
+
+    return  YES ; 
+}
+
+http://qiita.com/peromasamune/items/716de6da66dd31faeba8
+
+````
 
 # PFXStudio
 
