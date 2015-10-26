@@ -17,6 +17,24 @@ add NSAppTransportSecurity(Type Dictionary)
 add NSAllowsArbitraryLoads(Type boolean) YES
 
 ````
+````
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSExceptionDomains</key>
+    <dict>
+        <key>pubsub.pubnub.com</key>
+        <dict>
+            <key>NSExceptionAllowsInsecureHTTPLoads</key>
+            <true/>
+            <key>NSIncludesSubdomains</key>
+            <true/>
+        </dict>
+    </dict>
+</dict>
+
+특정 도메인 예외 처리할 경우
+
+````
 
 #iOS9 Bitcode Error
 
@@ -69,6 +87,14 @@ Build Settings - Enable Bitcode - NO로 변경
 
     return  YES ; 
 }
+
+
+````
+
+#Crash dyld: Library not loaded:
+
+````
+Found the solution, in the target's General tab, there is an Embedded Binaries field, add framework there, and the crash is resolved.
 
 
 ````
