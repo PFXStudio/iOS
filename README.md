@@ -48,6 +48,14 @@ Build Settings - Enable Bitcode - NO로 변경
 
 ````
 
+#iOS8 위치 정보를 못 얻어 오는 경우
+
+````
+프로젝트 설정파일인 Info.plist에 위치정보를 사용하는 이유를 추가
+NSLocationAlwaysUsageDescription (항상 허용)
+NSLocationWhenInUseUsageDescription (사용중인 경우만 허용)
+````
+
 #iOS9 Application windows are expected to have a root view controller at the end of application launch Crash!
 
 ````
@@ -91,6 +99,15 @@ Build Settings - Enable Bitcode - NO로 변경
 
 ````
 
+#cocoaPods
+
+````
+sudo gem install cocoapods
+cocoaPod을 사용한 프로젝트 폴더로 이동 한 후 
+pod install
+
+````
+
 #Crash dyld: Library not loaded:
 
 ````
@@ -102,6 +119,61 @@ Found the solution, in the target's General tab, there is an Embedded Binaries f
 참고
 
 http://qiita.com/peromasamune/items/716de6da66dd31faeba8
+
+#Crash dyld: Library not loaded: @rpath/
+
+````
+
+I was having this problem and was able to fix it by adding the Swift framework (MySDK.framework) to the "Embedded Binaries" section of the "General" tab of the Xcode project settings.
+
+````
+
+참고
+
+http://stackoverflow.com/questions/24211549/dyld-library-not-loaded-rpath-mydsk-framework-mydsk-swift-ios-8-0
+
+#APNS 개발 중 Client already exists 
+
+````
+APNS 호출 시 동일 한 키 값으로 호출을 할 경우 나타나는 문제
+유니크한 키 값으로 변경 해 주면 위 현상은 나타나지 않는다
+
+````
+
+#Crash Swift app crashes when trying to reference Swift library libswiftCore.dylib
+
+````
+프로젝트 빌드 파일 모두 삭제 후 인증서 재 설정하고 빌드 하니까 됨
+한 컴퓨터에서 여러 인증서를 관리하다 보니 뭔가 꼬인듯..
+````
+
+참고
+
+https://developer.apple.com/library/ios/qa/qa1886/_index.html
+
+#file was built for i386 which is not the architecture being linked (x86_64)
+````
+프레임워크 만들어서 빌드 하였는데 
+file was built for i386 which is not the architecture being linked (x86_64) 
+위 에러가 나타난다. 클린 빌드 하면 빌드가 되고
+빌드 설정에 Build Active Architecture Only explicitly 
+No로 설정
+````
+
+#Include of non-modular header inside framework module
+````
+You can set Allow Non-modular includes in Framework Modules in Build Settings for the affected target to YES. 
+This is the build setting you need to edit:
+빌드 속성에 
+Allow Non-modular includes in Framework Modules 항목을
+YES로 변경 하면 됨
+````
+
+# NSTimer invalidate not working
+````
+@property (weak, nonatomic) NSTimer *timer;
+약한 참조로 해야 한다... 강한 참조로 하면 메모리 해제가 안돼서 timer가 살아 있다
+````
 
 # 약전계 테스트
 
