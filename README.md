@@ -86,14 +86,14 @@ NSLocationWhenInUseUsageDescription (사용중인 경우만 허용)
 해결 방안
 
 ````
--  ( BOOL ) application : ( UIApplication  * ) Application  didFinishLaunchingWithOptions : ( NSDictionary  * ) launchOptions 
-{ 
-    // 윈도우 초기화 
-    self . window  =  [[ UIWindow  alloc ]  initWithFrame : [ UIScreen  MainScreen ]  bounds ]]; 
-    self . window . rootViewController  =  [ UIViewController  new ]; 
+-  ( BOOL ) application : ( UIApplication  * ) Application  didFinishLaunchingWithOptions : ( NSDictionary  * ) launchOptions
+{
+    // 윈도우 초기화
+    self . window  =  [[ UIWindow  alloc ]  initWithFrame : [ UIScreen  MainScreen ]  bounds ]];
+    self . window . rootViewController  =  [ UIViewController  new ];
     [ self . window  makeKeyAndVisible ];
 
-    return  YES ; 
+    return  YES ;
 }
 
 
@@ -103,7 +103,7 @@ NSLocationWhenInUseUsageDescription (사용중인 경우만 허용)
 
 ````
 sudo gem install cocoapods
-cocoaPod을 사용한 프로젝트 폴더로 이동 한 후 
+cocoaPod을 사용한 프로젝트 폴더로 이동 한 후
 pod install
 
 ````
@@ -132,7 +132,7 @@ I was having this problem and was able to fix it by adding the Swift framework (
 
 http://stackoverflow.com/questions/24211549/dyld-library-not-loaded-rpath-mydsk-framework-mydsk-swift-ios-8-0
 
-#APNS 개발 중 Client already exists 
+#APNS 개발 중 Client already exists
 
 ````
 APNS 호출 시 동일 한 키 값으로 호출을 할 경우 나타나는 문제
@@ -153,18 +153,18 @@ https://developer.apple.com/library/ios/qa/qa1886/_index.html
 
 #file was built for i386 which is not the architecture being linked (x86_64)
 ````
-프레임워크 만들어서 빌드 하였는데 
-file was built for i386 which is not the architecture being linked (x86_64) 
+프레임워크 만들어서 빌드 하였는데
+file was built for i386 which is not the architecture being linked (x86_64)
 위 에러가 나타난다. 클린 빌드 하면 빌드가 되고
-빌드 설정에 Build Active Architecture Only explicitly 
+빌드 설정에 Build Active Architecture Only explicitly
 No로 설정
 ````
 
 #Include of non-modular header inside framework module
 ````
-You can set Allow Non-modular includes in Framework Modules in Build Settings for the affected target to YES. 
+You can set Allow Non-modular includes in Framework Modules in Build Settings for the affected target to YES.
 This is the build setting you need to edit:
-빌드 속성에 
+빌드 속성에
 Allow Non-modular includes in Framework Modules 항목을
 YES로 변경 하면 됨
 ````
@@ -183,7 +183,7 @@ https://developer.apple.com/downloads/
 
 # Storyboard TableViewController 뷰가 아래로 내려가는 문제
 
-코드로 
+코드로
 
 navigationBar.translucent = NO;
 
@@ -191,6 +191,48 @@ navigationBar.translucent = NO;
 
 Translucent 체크 해제
 
+# xcode10 framework script Build
+
+````
+accessing build database "/Users/succorer/Documents/xxxx/build.db": database is locked Possibly there are two concurrent builds running in the same filesystem location.
+에러 발생.
+
+echo "BUILD DIRECTORY ${BUILD_DIR}"
+xcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphonesimulator -target ${PROJECT_NAME} -configuration ${CONFIGURATION} build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator OBJROOT="${OBJROOT}/DependentBuilds"
+
+xcodebuild -project ${PROJECT_NAME}.xcodeproj -sdk iphoneos -target ${PROJECT_NAME} -configuration ${CONFIGURATION} build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos OBJROOT="${OBJROOT}/DependentBuilds"
+````
+
+# Let's Swift.
+
+````
+sourcekitd.Framework - xpc 분석 툴
+sourcekitten
+
+Ruby gem
+  Carthage
+  Bundler를 이용하여 설치
+  -> gem install Bundler
+  tachikoma : cocopods 외부 라이브러리 최신 버전으로 업데이트 해 줌 tachikoma.io
+  houston : 로컬에서 푸시 노티피케이션 테스트 가능
+  danger : Objc 코드, 스토리보드 코드 검증
+  tenma : dev, master 브런치 제작
+  fastlane : 앱 스토어 업로드 및 심사 신청
+  bitrise
+
+RxRibs
+
+ReSwift
+
+
+
+
+
+
+
+
+
+````
 
 # PFXStudio
 
